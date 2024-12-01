@@ -18,18 +18,24 @@
     <ClCompile Include="labs.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="lab_03.cpp">
+    <ClCompile Include="my_lib.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="my_lib.cpp">
+    <ClCompile Include="lab_03\lab_03.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="lab_04\lab_04.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="lab_03.h">
+    <ClInclude Include="my_lib.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="my_lib.h">
+    <ClInclude Include="lab_03\lab_03.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="lab_04\lab_04.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
