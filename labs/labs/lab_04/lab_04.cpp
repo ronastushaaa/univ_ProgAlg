@@ -232,11 +232,4 @@ namespace lab_04
 		delete[] arr;
 		delete[] lst;
 	}
-
-	// Основная функция
-	void lab_04()
-	{
-		menu();
-	}
-
 } // namespace

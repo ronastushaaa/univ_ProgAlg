@@ -258,10 +258,4 @@ namespace lab_03
 		std::cout << "Факториал числа " << a << " составляет " << factorial << std::endl << "\n";
 	}
 
-	// Основная функция 
-	void lab_03()
-	{
-		menu();
-	}
-
 } // namespace

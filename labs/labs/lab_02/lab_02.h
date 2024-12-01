@@ -1,6 +1,6 @@
 #pragma once
 
-namespace lab_03
+namespace lab_02
 {
 	void menu();
 }
