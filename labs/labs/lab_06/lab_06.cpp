@@ -61,38 +61,27 @@ namespace lab_06
 			std::cout << "Введите строчку, которую хотите добавить файл: ";
 			std::cin >> s;
 			MyFile << s;
-			MyFile << "\n";
+			MyFile << std::endl;
 			--a;
 		}
-		std::cout << std::endl;
-		std::cout << "Содержание файла:" << std::endl;
 		MyFile.close();
-		char buff[50];
-		std::ifstream fin("lab_06/first.txt");
-		fin.getline(buff, 50);
-		while (fin.good())
-		{
-			std::cout << buff;
-			std::cout << std::endl;
-			fin.getline(buff, 50);
-		}
-		fin.close();
-		std::cout << std::endl;
 	}
 
 	void task_2()
 	{
 		std::cout << "Задание 2: Чтение данных из файла." << std::endl;
-		char buff[100];
-		std::ifstream fin("lab_06/second.txt");
+		std::ifstream fin("lab_06/first.txt", std::ios::binary);
 		std::cout << "Данные из файла:" << std::endl;
-		fin.getline(buff, 100);
-		while (fin.good())
-		{
-			std::cout << buff << std::endl;
-			fin.getline(buff, 100);
-		}
-		std::cout << std::endl;
+
+
+		char buff[5];
+		do {
+			fin.read(buff, sizeof(buff) - 1);
+			buff[fin.gcount()] = '\0';
+			std::cout << buff;
+		} while (!fin.eof());
+		fin.close();
+		std::cout << std::endl << std::endl;
 	}
 
 	void task_3()
@@ -102,7 +91,7 @@ namespace lab_06
 		int a = n_ReadInt(INT_MAX);
 		if (a == INT_MAX)
 			return;
-		std::fstream MyFile("lab_06/third.txt", std::ios::app);
+		std::fstream MyFile("lab_06/first.txt", std::ios::app);
 		std::string s;
 		int b = a;
 		while (a != 0)
@@ -110,67 +99,91 @@ namespace lab_06
 			std::cout << "Введите строчку, которую хотите добавить файл: ";
 			std::cin >> s;
 			MyFile << s;
-			MyFile << "\n";
+			MyFile << std::endl;
 			--a;
 		}
+		MyFile.close();
 		std::cout << std::endl;
 		std::cout << "Содержание файла:" << std::endl;
-		MyFile.close();
-		char buff[50];
-		std::ifstream fin("lab_06/third.txt");
-		fin.getline(buff, 50);
-		while (fin.good())
+		char buff[5];
+		std::ifstream fin("lab_06/first.txt");
+		do
 		{
+			fin.read(buff, sizeof(buff) - 1);
+			buff[fin.gcount()] = '\0';
 			std::cout << buff;
-			std::cout << std::endl;
-			fin.getline(buff, 50);
-		}
+		} while (!fin.eof());
 		fin.close();
 		std::cout << std::endl;
 	}
 
+	struct Point {
+		double x;
+		double y;
+		double z;
+		std::string color;
+	};
+
 	void task_4()
 	{
+		Point point;
+		std::cout << "Задание 4: Запись структуры данных в файл и последующее чтение из него." << std::endl;
+		std::cout << "Введите координату X для точки: ";
+		point.x = n_ReadInt(INT_MAX);
+		if (point.x == INT_MAX)
+			return;
+		std::cout << "Введите координату Y для точки: ";
+		point.y = n_ReadInt(INT_MAX);
+		if (point.y == INT_MAX)
+			return;
+		std::cout << "Введите координату Z для точки: ";
+		point.z = n_ReadInt(INT_MAX);
+		if (point.z == INT_MAX)
+			return;
+		std::cout << "Введите цвет точки: ";
+		std::cin >> point.color;
 
+		std::ofstream outFile("lab_06/fourth.txt", std::ios::binary);
+		outFile.write((char*) &point, sizeof(point));
+		outFile.close();
+
+		std::ifstream inFile("lab_06/fourth.txt", std::ios::binary);
+		inFile.read((char*)&point, sizeof(point));
+		inFile.close();
+
+		//std::cout << "Имя: " << person.name << ", Возраст: " << person.age << std::endl;
+		std::cout << "Координата точки x: " << point.x << std::endl;
+		std::cout << "Координата точки y: " << point.y << std::endl;
+		std::cout << "Координата точки z: " << point.z << std::endl;
+		std::cout << "Цвет точки: " << point.color << std::endl;
 	}
 
 	void task_5()
 	{
-		std::cout << "Задание 5: Копированние содержимое одного файла в другой." << std::endl;
-		char buff[50];
+		std::cout << "Задание 5: Копированние содержимого одного файла в другой." << std::endl;
+		char buff[5];
 		std::ifstream fin("lab_06/fifth_1.txt");
 		std::ofstream file("lab_06/fifth_2.txt");
 		std::cout << "Данные из файла:" << std::endl;
-		fin.getline(buff, 50);
-		while (fin.good())
+		do
 		{
+			fin.read(buff, sizeof(buff) - 1);
+			buff[fin.gcount()] = '\0';
 			file << buff;
-			file << "\n";
-			std::cout << buff << std::endl;
-			fin.getline(buff, 50);
-		}
+			std::cout << buff;
+		} while (!fin.eof());
 		fin.close();
 		file.close();
-		char temp_1[50];
-		char temp_2[50];
+		char temp_2[5];
 		std::ifstream fin_1("lab_06/fifth_1.txt");
 		std::ifstream fin_2("lab_06/fifth_2.txt");
-		std::cout << std::endl;
-		std::cout << "Содержание первого файла: " << std::endl;
-		fin_1.getline(temp_1, 50);
-		while (fin_1.good())
-		{
-			std::cout << temp_1 << std::endl;
-			fin_1.getline(temp_1, 50);
-		}
-		std::cout << std::endl;
 		std::cout << "Содержание второго файла: " << std::endl;
-		fin_2.getline(temp_2, 50);
-		while (fin_2.good())
+		do
 		{
-			std::cout << temp_2 << std::endl;
-			fin_2.getline(temp_2, 50);
-		}
+			fin_2.read(temp_2, sizeof(temp_2) - 1);
+			temp_2[fin_2.gcount()] = '\0';
+			std::cout << temp_2;
+		} while (!fin_2.eof());
 		fin_1.close();
 		fin_2.close();
 	}
