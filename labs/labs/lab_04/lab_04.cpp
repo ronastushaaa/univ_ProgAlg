@@ -133,7 +133,7 @@ namespace lab_04
 	//		     [   ][   ][   ]
 		std::cout << "Задание 3: Транспонирование матрицы" << std::endl;
 		char buff[50];
-		std::ifstream fin("matrix.txt");
+		std::ifstream fin("lab_04/matrix.txt");
 		int row = 3, col = 3, cnt;
 		int** matrix = new int* [row];
 		for (int i = 0; i < row; ++i)

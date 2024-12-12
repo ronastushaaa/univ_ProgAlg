@@ -200,9 +200,12 @@ namespace lab_03
 			return;
 		}
 		int cnt = 0, i = 2;
-		while (i > sqrt(a))
+		while (i < sqrt(a))
 		{
-			++cnt;
+			if (a % i == 0)
+			{
+				++cnt;
+			}
 			++i;
 		}
 		if (cnt == 0 && a != 1)
