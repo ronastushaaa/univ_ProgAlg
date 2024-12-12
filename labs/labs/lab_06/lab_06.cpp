@@ -151,7 +151,6 @@ namespace lab_06
 		inFile.read((char*)&point, sizeof(point));
 		inFile.close();
 
-		//std::cout << "Имя: " << person.name << ", Возраст: " << person.age << std::endl;
 		std::cout << "Координата точки x: " << point.x << std::endl;
 		std::cout << "Координата точки y: " << point.y << std::endl;
 		std::cout << "Координата точки z: " << point.z << std::endl;
