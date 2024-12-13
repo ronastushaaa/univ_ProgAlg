@@ -17,11 +17,11 @@ namespace lab_06
 		char a = '-';
 
 		std::cout << "Выберите задание из списка: \n"
-			"(a) Задание 1 \n"
-			"(b) Задание 2 \n"
-			"(c) Задание 3 \n"
-			"(d) Задание 4 \n"
-			"(e) Задание 5 \n" << std::endl;
+			"(1) Записать в файл (first) \n"
+			"(2) Прочитать файл (first) \n"
+			"(3) Добавить новые строки в файл (first) \n"
+			"(4) Записать структуру данных (fourth) \n"
+			"(5) Копирование файла (fifth) \n" << std::endl;
 		std::cin >> a;
 		std::cout << std::endl;
 		return a;
@@ -35,11 +35,11 @@ namespace lab_06
 			a = select_task();
 			switch (a)
 			{
-				case 'a': task_1(); break;
-				case 'b': task_2(); break;
-				case 'c': task_3(); break;
-				case 'd': task_4(); break;
-				case 'e': task_5(); break;
+				case '1': task_1(); break;
+				case '2': task_2(); break;
+				case '3': task_3(); break;
+				case '4': task_4(); break;
+				case '5': task_5(); break;
 				case '0': std::cout << "Выход из программы" << std::endl; break;
 				default: std::cout << "Неправильный ввод, попробуйте снова" << std::endl;
 			}
@@ -53,18 +53,18 @@ namespace lab_06
 		int a = n_ReadInt(INT_MAX);
 		if (a == INT_MAX)
 			return;
-		std::ofstream MyFile("lab_06/first.txt");
+		std::ofstream my_file("lab_06/first.txt");
 		std::string s;
 		int b = a;
 		while (a != 0)
 		{
 			std::cout << "Введите строчку, которую хотите добавить файл: ";
 			std::cin >> s;
-			MyFile << s;
-			MyFile << std::endl;
+			my_file << s;
+			my_file << std::endl;
 			--a;
 		}
-		MyFile.close();
+		my_file.close();
 	}
 
 	void task_2()
@@ -74,7 +74,7 @@ namespace lab_06
 		std::cout << "Данные из файла:" << std::endl;
 
 
-		char buff[5];
+		char buff[32];
 		do {
 			fin.read(buff, sizeof(buff) - 1);
 			buff[fin.gcount()] = '\0';
@@ -93,7 +93,6 @@ namespace lab_06
 			return;
 		std::fstream MyFile("lab_06/first.txt", std::ios::app);
 		std::string s;
-		int b = a;
 		while (a != 0)
 		{
 			std::cout << "Введите строчку, которую хотите добавить файл: ";
@@ -104,17 +103,6 @@ namespace lab_06
 		}
 		MyFile.close();
 		std::cout << std::endl;
-		std::cout << "Содержание файла:" << std::endl;
-		char buff[5];
-		std::ifstream fin("lab_06/first.txt");
-		do
-		{
-			fin.read(buff, sizeof(buff) - 1);
-			buff[fin.gcount()] = '\0';
-			std::cout << buff;
-		} while (!fin.eof());
-		fin.close();
-		std::cout << std::endl;
 	}
 
 	struct Point {
@@ -123,6 +111,7 @@ namespace lab_06
 		double z;
 		std::string color;
 	};
+	
 
 	void task_4()
 	{
@@ -155,27 +144,25 @@ namespace lab_06
 		std::cout << "Координата точки y: " << point.y << std::endl;
 		std::cout << "Координата точки z: " << point.z << std::endl;
 		std::cout << "Цвет точки: " << point.color << std::endl;
+		std::cout << sizeof(point.x) << std::endl;
+		std::cout << sizeof(point) << std::endl;
 	}
 
 	void task_5()
 	{
 		std::cout << "Задание 5: Копированние содержимого одного файла в другой." << std::endl;
-		char buff[5];
-		std::ifstream fin("lab_06/fifth_1.txt");
-		std::ofstream file("lab_06/fifth_2.txt");
-		std::cout << "Данные из файла:" << std::endl;
+		char buff[32];
+		std::ifstream fin("lab_06/fourth.txt", std::ios::binary);
+		std::ofstream file("lab_06/fifth.txt", std::ios::binary);
 		do
 		{
 			fin.read(buff, sizeof(buff) - 1);
-			buff[fin.gcount()] = '\0';
-			file << buff;
-			std::cout << buff;
+			file.write(buff, fin.gcount());
 		} while (!fin.eof());
 		fin.close();
 		file.close();
-		char temp_2[5];
-		std::ifstream fin_1("lab_06/fifth_1.txt");
-		std::ifstream fin_2("lab_06/fifth_2.txt");
+		char temp_2[32];
+		std::ifstream fin_2("lab_06/fifth.txt");
 		std::cout << "Содержание второго файла: " << std::endl;
 		do
 		{
@@ -183,7 +170,6 @@ namespace lab_06
 			temp_2[fin_2.gcount()] = '\0';
 			std::cout << temp_2;
 		} while (!fin_2.eof());
-		fin_1.close();
 		fin_2.close();
 	}
 } // namespace
