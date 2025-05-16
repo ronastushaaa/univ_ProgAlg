@@ -55,7 +55,6 @@ namespace lab_06
 			return;
 		std::ofstream my_file("lab_06/first.txt");
 		std::string s;
-		int b = a;
 		while (a != 0)
 		{
 			std::cout << "¬ведите строчку, которую хотите добавить файл: ";

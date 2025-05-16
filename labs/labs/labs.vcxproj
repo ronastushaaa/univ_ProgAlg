@@ -130,20 +130,28 @@
   <ItemGroup>
     <ClCompile Include="labs.cpp" />
     <ClCompile Include="lab_00\lab_00.cpp" />
+    <ClCompile Include="lab_01\lab_01.cpp" />
     <ClCompile Include="lab_02\lab_02.cpp" />
     <ClCompile Include="lab_03\lab_03.cpp" />
     <ClCompile Include="lab_04\lab_04.cpp" />
     <ClCompile Include="lab_05\lab_05.cpp" />
     <ClCompile Include="lab_06\lab_06.cpp" />
+    <ClCompile Include="lab_07\lab_07.cpp" />
+    <ClCompile Include="lab_11\lab_11.cpp" />
+    <ClCompile Include="lab_12\lab_12.cpp" />
     <ClCompile Include="my_lib.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="lab_00\lab_00.h" />
+    <ClInclude Include="lab_01\lab_01.h" />
     <ClInclude Include="lab_02\lab_02.h" />
     <ClInclude Include="lab_03\lab_03.h" />
     <ClInclude Include="lab_04\lab_04.h" />
     <ClInclude Include="lab_05\lab_05.h" />
     <ClInclude Include="lab_06\lab_06.h" />
+    <ClInclude Include="lab_07\lab_07.h" />
+    <ClInclude Include="lab_11\lab_11.h" />
+    <ClInclude Include="lab_12\lab_12.h" />
     <ClInclude Include="my_lib.h" />
   </ItemGroup>
   <ItemGroup>
