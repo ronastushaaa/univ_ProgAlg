@@ -12,19 +12,19 @@ namespace lab_13
 	{
 	private:
 		std::string              FName;
-		std::vector<std::string> FCodon;
+		char                     FCodon;
 	public:
-		TAminoAcid(const std::string& name, const std::vector<std::string>& codon) : FName(name), FCodon(codon) {}
+		TAminoAcid(const std::string& name, const char& codon) : FName(name), FCodon(codon) {}
 		std::vector<std::string> total;
 		std::string index() const override
 		{
 			return FName;
 		}
-		std::vector<std::string> getcodon() const
+		char getcodon() const
 		{
 			return FCodon;
 		}
-		void total_aminoAcid(std::vector<std::string> condon)
+		/*void total_aminoAcid(std::vector<std::string> condon)
 		{
 			for (int i = 0; i < condon.size(); ++i)
 			{
@@ -41,10 +41,10 @@ namespace lab_13
 					return 
 				}
 			}
-		}
+		}*/
 	};
 
-	class TProtein : public TBase
+	class TProteinSequence : public TBase
 	{
 	private:
 		std::vector<TAminoAcid> aminoAcids;
@@ -52,6 +52,15 @@ namespace lab_13
 		void addAminoAcid(const TAminoAcid& a)
 		{
 			aminoAcids.push_back(a);
+		}
+		std::string sequence() const
+		{
+			std::string str;
+			for (int i = 0; i < aminoAcids.size(); ++i)
+			{
+				str += aminoAcids[i].getcodon();
+			}
+			return str;
 		}
 	};
 }

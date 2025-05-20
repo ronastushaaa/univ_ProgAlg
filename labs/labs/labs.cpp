@@ -9,6 +9,7 @@
 #include "lab_07/lab_07.h"
 #include "lab_11/lab_11.h"
 #include "lab_12/lab_12.h"
+#include "lab_13/lab_13.h"
 
 // Основная функция 
 int main()
@@ -25,7 +26,8 @@ int main()
 	//lab_06::menu();
 	//lab_07::menu();
 	//lab_11::menu();
-	lab_12::menu();
+	lab_13::menu();
+	//lab_12::menu();
 	return 0;
 }
 
